@@ -1,6 +1,6 @@
 import React from 'react'
 import { createPortal } from 'react-dom'
-import { Button, Container } from "@mui/material"
+import { Button, Container, Grid } from "@mui/material"
 
 
 const Iframe = ({children, src}) => {
@@ -14,10 +14,21 @@ const handlePrint = () => {
 }
 
 return (<Container>
-     <iframe ref={setContentRef} src={`/api/pdf?src=${src}`}>
+    <Grid container direction="column">
+    <Grid item>
+    
+    <iframe ref={setContentRef} src={`/api/pdf?src=${src}`}>
      {mountNode && createPortal(children, mountNode)}
      </iframe>
-     <Button size="large" color="primary" onClick={handlePrint}>Print</Button>
+
+    </Grid>
+    <Grid item>
+
+    <Button variant="contained" size="large" color="primary" onClick={handlePrint}>Print</Button>
+
+    </Grid>
+    </Grid>
+   
 
 </Container>)
 
